@@ -2,7 +2,9 @@
 import streamlit as st
 from google import genai
 import os
-
+client = genai.Client(
+    api_key=st.secrets["GEMINI_API_KEY"]
+)
 st.set_page_config(
     page_title="Ella's Divine Bridal Studio",
     page_icon="💄",
