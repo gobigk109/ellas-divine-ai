@@ -61,7 +61,10 @@ with col2:
 
 st.write("")
 st.header("📅 Book Your Appointment")
-
+st.link_button(
+    "💬 Book on WhatsApp",
+    "https://wa.me/918428909415?text=Hello%20Ella's%20Divine,%20I%20want%20to%20book%20an%20appointment."
+)
 name = st.text_input("Your Name")
 phone = st.text_input("Phone Number")
 service = st.selectbox(
