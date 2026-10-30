@@ -60,6 +60,10 @@ with col3:
 st.caption("All packages include Face Makeup, Eye Makeup, Hair Styling, Saree Draping and Saree Pre-Pleating.")
 
 st.divider()
+st.link_button(
+    "💬 Book Now on WhatsApp",
+    "https://wa.me/918428909415?text=Hello%20Ella%27s%20Divine,%20I%20want%20to%20book%20an%20appointment."
+)
 
 # MUHURTHAM PACKAGES
 st.header("👑 Muhurtham / Reception / Engagement")
