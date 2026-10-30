@@ -244,28 +244,64 @@ with st.form("bridal_booking_form"):
 
     submit_booking = st.form_submit_button("Submit Booking Enquiry")
 
+    
     if submit_booking:
         if customer_name and customer_phone:
-            st.success("Thank you! Your booking enquiry is received.")
 
-            booking_message = (
-                f"Hello Ella's Divine! "
-                f"Name: {customer_name}, "
-                f"Phone: {customer_phone}, "
-                f"Date: {wedding_date}, "
-                f"Package: {makeup_package}"
-            )
-
+            import json
+            import urllib.request
             import urllib.parse
 
-            booking_link = (
-                "https://wa.me/918428909415?text="
-                + urllib.parse.quote(booking_message)
-            )
+            booking_data = {
+                "name": customer_name,
+                "phone": customer_phone,
+                "date": str(wedding_date),
+                "package": makeup_package
+            }
 
-            st.link_button("Send Booking on WhatsApp", booking_link)
+            script_url = "https://script.google.com/macros/s/AKfycbxxwDkpqDUu4Rr4kSz4CIAxwfBuKLYA9KukR-irPAqpTHrQB8i7VAPRyVnIMu4Pc_G97w/exec"
+
+            try:
+                data = json.dumps(booking_data).encode("utf-8")
+
+                request = urllib.request.Request(
+                    script_url,
+                    data=data,
+                    headers={"Content-Type": "application/json"},
+                    method="POST"
+                )
+
+                with urllib.request.urlopen(request, timeout=30) as response:
+                    result = json.loads(response.read().decode("utf-8"))
+
+                if result.get("status") == "success":
+                    st.success("Booking saved successfully!")
+
+                    message = (
+                        f"Hello Ella's Divine! "
+                        f"Name: {customer_name}, "
+                        f"Phone: {customer_phone}, "
+                        f"Date: {wedding_date}, "
+                        f"Package: {makeup_package}"
+                    )
+
+                    whatsapp_url = (
+                        "https://wa.me/918428909415?text="
+                        + urllib.parse.quote(message)
+                    )
+
+                    st.link_button(
+                        "Send Booking on WhatsApp",
+                        whatsapp_url
+                    )
+                else:
+                    st.error("Booking could not be saved.")
+
+            except Exception as e:
+                st.error(f"Database Error: {e}")
 
         else:
             st.warning("Please enter your name and phone number.")
+
 
 
