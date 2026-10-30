@@ -75,6 +75,10 @@ with col1:
     st.subheader("BASIC LEVEL")
     st.title("₹10,000")
     st.write("Very light & age-appropriate makeup")
+    st.link_button(
+    "💬 Book Now on WhatsApp",
+    "https://wa.me/918428909415?text=Hello%20Ella%27s%20Divine,%20I%20want%20to%20book%20an%20appointment."
+)
 
 with col2:
     st.subheader("ADVANCED HD")
@@ -109,6 +113,10 @@ st.divider()
 
 # BOOKING
 st.header("📅 Book Your Appointment")
+st.link_button(
+    "💬 Book Now on WhatsApp",
+    "https://wa.me/918428909415?text=Hello%20Ella%27s%20Divine,%20I%20want%20to%20book%20an%20appointment."
+)
 
 name = st.text_input("Your Name")
 phone = st.text_input("Your Phone Number")
