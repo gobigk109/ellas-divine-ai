@@ -8,24 +8,27 @@ st.set_page_config(
 )
 
 st.markdown("""
+<style>
+.stApp {
+    background: #fff7f3;
+}
+
+h1, h2, h3 {
+    color: #76152f;
+}
+
+.stButton button {
+    background-color: #76152f;
+    color: white;
+    border-radius: 12px;
+}
+
 .stLinkButton a {
     background-color: #25D366 !important;
     color: white !important;
     border: none !important;
     border-radius: 12px !important;
     font-weight: bold !important;
-}
-<style>
-.stApp {
-    background: #fff7f3;
-}
-h1, h2, h3 {
-    color: #76152f;
-}
-.stButton button, .stLinkButton a {
-    background-color: #76152f;
-    color: white;
-    border-radius: 12px;
 }
 </style>
 """, unsafe_allow_html=True)
