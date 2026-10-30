@@ -190,6 +190,7 @@ for role, message in st.session_state.chat_history:
 user_question = st.chat_input("Ask Ella's Divine...")
 
 if user_question:
+    st.rerun()
     st.session_state.chat_history.append(
         ("user", user_question)
     )
