@@ -168,3 +168,55 @@ st.link_button(
     "https://share.google/9JXUSVzi2tXfncoiO"
 )
 st.write("📸 Instagram: @ellas_divine_bridal_studio")
+
+# ELLA'S DIVINE CHAT ASSISTANT
+
+st.divider()
+st.header("🤖 Ella's Divine AI Assistant")
+st.write("Ask me about Bridal Makeup, Packages, Prices and Booking!")
+st.caption("தமிழ் அல்லது English-ல் கேள்வி கேட்கலாம்.")
+
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+for role, message in st.session_state.chat_history:
+    with st.chat_message(role):
+        st.write(message)
+
+user_question = st.chat_input("Ask Ella's Divine...")
+
+if user_question:
+    st.session_state.chat_history.append(
+        ("user", user_question)
+    )
+
+    question = user_question.lower()
+
+    if "price" in question or "விலை" in question or "rate" in question:
+        answer = """
+        Our Bridal Packages:
+        💄 Basic - ₹6,000
+        ✨ HD - ₹8,000
+        👑 Glossy - ₹10,000
+
+        Please contact us for more details.
+        """
+
+    elif "booking" in question or "appointment" in question or "புக்கிங்" in question:
+        answer = "You can book your appointment through our WhatsApp: +91 8428909415"
+
+    elif "location" in question or "address" in question or "எங்கே" in question:
+        answer = "We are located in Vaithiswarankovil. Please use our Google Maps link on this website."
+
+    elif "bridal" in question or "makeup" in question or "மேக்கப்" in question:
+        answer = "We offer Basic, HD and Glossy Bridal Makeup packages. Please contact us for booking."
+
+    else:
+        answer = "Thank you for contacting Ella's Divine! For assistance, please WhatsApp us at +91 8428909415."
+
+    st.session_state.chat_history.append(
+        ("assistant", answer)
+    )
+
+    st.rerun()
+
