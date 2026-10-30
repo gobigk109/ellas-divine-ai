@@ -8,6 +8,13 @@ st.set_page_config(
 )
 
 st.markdown("""
+.stLinkButton a {
+    background-color: #25D366 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-weight: bold !important;
+}
 <style>
 .stApp {
     background: #fff7f3;
