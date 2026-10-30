@@ -219,4 +219,53 @@ if user_question:
     )
 
     st.rerun()
+    
+# CUSTOMER BOOKING FORM
+
+st.divider()
+st.header("💍 Bridal Booking Enquiry")
+
+with st.form("bridal_booking_form"):
+    customer_name = st.text_input("Customer Name")
+    customer_phone = st.text_input("WhatsApp Number")
+    wedding_date = st.date_input("Wedding Date")
+
+    makeup_package = st.selectbox(
+        "Select Makeup Package",
+        [
+            "Basic - ₹6,000",
+            "HD - ₹8,000",
+            "Glossy - ₹10,000",
+            "Muhurtham Basic - ₹10,000",
+            "Muhurtham Advanced HD - ₹15,000",
+            "Muhurtham Premium - ₹20,000"
+        ]
+    )
+
+    submit_booking = st.form_submit_button("Submit Booking Enquiry")
+
+    if submit_booking:
+        if customer_name and customer_phone:
+            st.success("Thank you! Your booking enquiry is received.")
+
+            booking_message = (
+                f"Hello Ella's Divine! "
+                f"Name: {customer_name}, "
+                f"Phone: {customer_phone}, "
+                f"Date: {wedding_date}, "
+                f"Package: {makeup_package}"
+            )
+
+            import urllib.parse
+
+            booking_link = (
+                "https://wa.me/918428909415?text="
+                + urllib.parse.quote(booking_message)
+            )
+
+            st.link_button("Send Booking on WhatsApp", booking_link)
+
+        else:
+            st.warning("Please enter your name and phone number.")
+
 
