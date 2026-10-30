@@ -194,29 +194,64 @@ if user_question:
         ("user", user_question)
     )
 
-    question = user_question.lower()
+    try:
+        conversation = "\n".join(
+            [
+                f"{role}: {message}"
+                for role, message in st.session_state.chat_history[-10:]
+            ]
+        )
 
-    if "price" in question or "விலை" in question or "rate" in question:
-        answer = """
-        Our Bridal Packages:
-        💄 Basic - ₹6,000
-        ✨ HD - ₹8,000
-        👑 Glossy - ₹10,000
+        prompt = f"""
+You are the official AI assistant of Ella's Divine
+Beauty & Bridal Studio & Academy in Vaithiswarankovil.
 
-        Please contact us for more details.
-        """
+BUSINESS DETAILS:
 
-    elif "booking" in question or "appointment" in question or "புக்கிங்" in question:
-        answer = "You can book your appointment through our WhatsApp: +91 8428909415"
+Location: Vaithiswarankovil, Tamil Nadu
+WhatsApp: +91 8428909415
 
-    elif "location" in question or "address" in question or "எங்கே" in question:
-        answer = "We are located in Vaithiswarankovil. Please use our Google Maps link on this website."
+BRIDAL PACKAGES:
+Basic Bridal: ₹6,000
+HD Bridal: ₹8,000
+Glossy Bridal: ₹10,000
 
-    elif "bridal" in question or "makeup" in question or "மேக்கப்" in question:
-        answer = "We offer Basic, HD and Glossy Bridal Makeup packages. Please contact us for booking."
+MUHURTHAM / RECEPTION / ENGAGEMENT:
+Basic: ₹10,000
+Advanced HD: ₹15,000
+Premium: ₹20,000
 
-    else:
-        answer = "Thank you for contacting Ella's Divine! For assistance, please WhatsApp us at +91 8428909415."
+GUEST SERVICES:
+Face Makeup: ₹2,000
+Hair Styling: ₹1,500
+Saree Draping: ₹800
+Saree Pre-Pleating: ₹500
+Pre-Pleat with Fluffy Pleats: ₹700
+Face Makeup + Saree Draping: ₹3,500
+
+INSTRUCTIONS:
+1. Reply in Tamil or English based on the customer's language.
+2. Be friendly, polite and professional.
+3. Answer questions about services and prices.
+4. Never invent prices or booking availability.
+5. For appointments, direct customers to WhatsApp.
+6. Keep replies simple and helpful.
+
+CONVERSATION:
+{conversation}
+
+Answer the latest customer question.
+"""
+
+        response = client.models.generate_content(
+            model="gemini-3.8-flash",
+            contents=prompt
+        )
+
+        answer = response.text or "Please contact us on WhatsApp."
+
+    except Exception as e:
+        answer = f"AI Assistant Error: {e}"
 
     st.session_state.chat_history.append(
         ("assistant", answer)
