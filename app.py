@@ -229,6 +229,21 @@ Saree Pre-Pleating: ₹500
 Pre-Pleat with Fluffy Pleats: ₹700
 Face Makeup + Saree Draping: ₹3,500
 
+ACADEMY COURSES:
+
+- Professional Makeup Classes
+- Personal Grooming
+- Skin Care
+- Hair Care
+- Side Draping
+- Saree Draping
+- Saree Box Folding
+- Saree Pre-Pleating
+
+SPECIAL FEATURES:
+- Live Practical Demonstrations
+- Portfolio Creation for Students
+
 INSTRUCTIONS:
 1. Reply in Tamil or English based on the customer's language.
 2. Be friendly, polite and professional.
