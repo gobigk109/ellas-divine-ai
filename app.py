@@ -1,7 +1,13 @@
-
 import streamlit as st
 from google import genai
 import os
+
+st.set_page_config(
+    page_title="Ella's Divine Bridal Studio",
+    page_icon="💄",
+    layout="wide"
+)
+
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
@@ -190,7 +196,6 @@ for role, message in st.session_state.chat_history:
 user_question = st.chat_input("Ask Ella's Divine...")
 
 if user_question:
-    st.rerun()
     st.session_state.chat_history.append(
         ("user", user_question)
     )
