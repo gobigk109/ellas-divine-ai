@@ -163,4 +163,8 @@ st.divider()
 st.markdown("### 💗 Ella's Divine Beauty & Bridal Studio")
 st.write("📍 Vaithiswarankovil")
 st.write("📞 WhatsApp: +91 8428909415")
+st.link_button(
+    "📍 Find Our Studio – Google Maps",
+    "https://share.google/9JXUSVzi2tXfncoiO"
+)
 st.write("📸 Instagram: @ellas_divine_bridal_studio")
